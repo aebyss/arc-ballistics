@@ -90,6 +90,9 @@
     <header>
       <h1>ARC <span class="highlight">BALLISTICS</span></h1>
       <p class="status-line">STATUS: {isLoading ? 'Loading...' : `Ready (${Object.keys(weapons).length} Items)`}</p>
+      <a class="repo-link" href="https://github.com/aebyss/arc-ballistics" target="_blank">
+    GitHub Repository
+  </a>
     </header>
 
     <div class="grid-container">
@@ -140,6 +143,19 @@
     align-items: stretch; 
     transition: all 0.3s ease;
   }
+  .repo-link {
+  display: block;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #ed8936;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.repo-link:hover {
+  opacity: 0.7;
+}
   .left-panel-wrapper { display: flex; flex-direction: column; gap: 1.5rem; }
 
   @media(max-width: 900px) { .grid-container { grid-template-columns: 1fr; } }
