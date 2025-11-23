@@ -19,12 +19,6 @@ jobs:
           npm install
           node ./node_modules/vite/bin/vite.js build
 
-      - name: Deploy frontend assets
-        run: |
-          sudo rm -rf /home/edo/arc-ballistics/assets
-          sudo mkdir -p /home/edo/arc-ballistics/assets
-          sudo cp -r /home/edo/actions-runner/_work/arc-ballistics/arc-ballistics/frontend/dist/* \
-                   /home/edo/arc-ballistics/assets/
       - name: Prepare Go modules
         run: |
           go mod tidy
@@ -34,17 +28,15 @@ jobs:
         run: |
           CGO_ENABLED=0 go build -o arcballistics main.go
 
+      - name: Deploy frontend
+        run: |
+          sudo rm -rf /home/edo/arc-ballistics/frontend/dist
+          sudo mkdir -p /home/edo/arc-ballistics/frontend/dist
+          sudo cp -r frontend/dist/* /home/edo/arc-ballistics/frontend/dist/
+
       - name: Stop, deploy and start service
         run: |
           sudo systemctl stop arcballistics
           sleep 1
-
-          # Deploy Go backend
           sudo cp arcballistics /home/edo/arc-ballistics/arcballistics
-
-          # Deploy frontend
-          sudo rm -rf /home/edo/arc-ballistics/assets
-          sudo rm -f /home/edo/arc-ballistics/index.html
-          sudo cp -r frontend/dist/* /home/edo/arc-ballistics/
-
           sudo systemctl start arcballistics
