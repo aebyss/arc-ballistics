@@ -10,15 +10,17 @@ jobs:
     runs-on: self-hosted
 
     steps:
+      - name: Fix permissions
+        run: chmod +x frontend/node_modules/.bin/*
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Build frontend
         working-directory: frontend
         run: |
-          cd "$GITHUB_WORKSPACE/frontend"
+          cd frontend
           npm install
-          npm run build
+          npx vite build
 
       - name: Build Go backend
         run: |
