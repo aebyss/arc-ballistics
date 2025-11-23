@@ -16,7 +16,9 @@ jobs:
       - name: Build frontend
         working-directory: frontend
         run: |
+          cd frontend
           npm install
+          chmod -R +x node_modules/.bin
           npm run build
 
       - name: Build Go backend
