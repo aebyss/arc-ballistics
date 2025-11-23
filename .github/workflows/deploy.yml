@@ -23,8 +23,8 @@ jobs:
         run: |
           sudo rm -rf /home/edo/arc-ballistics/assets
           sudo mkdir -p /home/edo/arc-ballistics/assets
-          sudo cp -r frontend/dist/* /home/edo/arc-ballistics/assets/
-
+          sudo cp -r /home/edo/actions-runner/_work/arc-ballistics/arc-ballistics/frontend/dist/* \
+                   /home/edo/arc-ballistics/assets/
       - name: Prepare Go modules
         run: |
           go mod tidy
