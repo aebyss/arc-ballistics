@@ -18,7 +18,8 @@ jobs:
         run: |
           npm install
           node ./node_modules/vite/bin/vite.js build
-
+      - name: Go mod tidy
+        run: go mod tidy
       - name: Build Go backend
         run: |
           CGO_ENABLED=0 go build -o arcballistics main.go
