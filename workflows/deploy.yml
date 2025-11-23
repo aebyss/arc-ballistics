@@ -1,0 +1,28 @@
+name: Deploy to Raspberry Pi
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build frontend
+        working-directory: frontend
+        run: |
+          npm install
+          npm run build
+
+      - name: Build Go backend
+        run: |
+          go build -o arc-ballistics main.go
+
+      - name: Restart service
+        run: |
+          sudo systemctl restart arcballistics
+
