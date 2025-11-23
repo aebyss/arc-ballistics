@@ -116,6 +116,26 @@
           shield={selectedShield} 
           compact={showLegend} 
       />
+      <!-- Formula Legend -->
+<div class="legend-container">
+  <button class="legend-toggle" on:click={() => showLegend = !showLegend}>
+    {showLegend ? "Hide Legend" : "Show Legend"}
+  </button>
+
+  {#if showLegend}
+    <div class="legend-panel">
+      <h3>Formula Legend</h3>
+      <ul>
+        <li><b>D</b> — Damage per shot</li>
+        <li><b>n</b> — Number of shots</li>
+        <li><b>H</b> — Health</li>
+        <li><b>DR</b> — Damage Reduction (0–1)</li>
+        <li><b>RPM</b> — Rounds per minute</li>
+        <li><b>T_load</b> — Reload Time</li>
+      </ul>
+    </div>
+  {/if}
+</div>
 
     </div>
   </div>
@@ -154,4 +174,46 @@
   .left-panel-wrapper { display: flex; flex-direction: column; gap: 1.5rem; }
 
   @media(max-width: 900px) { .grid-container { grid-template-columns: 1fr; } }
+  .legend-container {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.legend-toggle {
+  background: #1f2735;
+  color: #e2e8f0;
+  padding: 0.4rem 1rem;
+  border: 1px solid #2d3748;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.legend-toggle:hover {
+  background: #2a3345;
+}
+
+.legend-panel {
+  margin-top: 1rem;
+  padding: 1rem 1.5rem;
+  background: #1a202c;
+  border-radius: 8px;
+  border: 1px solid #2d3748;
+  color: #cbd5e0;
+  font-size: 0.9rem;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.legend-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.legend-panel li {
+  padding: 0.2rem 0;
+}
+
 </style>
