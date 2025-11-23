@@ -19,6 +19,12 @@ jobs:
           npm install
           node ./node_modules/vite/bin/vite.js build
 
+      - name: Deploy frontend assets
+        run: |
+          sudo rm -rf /home/edo/arc-ballistics/assets
+          sudo mkdir -p /home/edo/arc-ballistics/assets
+          sudo cp -r frontend/dist/* /home/edo/arc-ballistics/assets/
+
       - name: Prepare Go modules
         run: |
           go mod tidy
