@@ -87,7 +87,7 @@
 }
 
 .wip-overlay {
-  position: absolute;
+  position: relative;
   inset: 0;
   display: flex;
   justify-content: center;
