@@ -111,23 +111,24 @@
         />
       </div>
 
-      <StatsPanel 
-          {stats} 
-          shield={selectedShield} 
-          compact={showLegend} 
-      />
-       <!-- Static Formula Legend -->
-      <div class="formula-panel">
-        <h2>Formula Legend</h2>
-        <div class="formula-grid">
-          <p><strong>D</strong> — Damage per shot</p>
-          <p><strong>n</strong> — Number of shots</p>
-          <p><strong>H</strong> — Health</p>
-          <p><strong>DR</strong> — Damage Reduction (0–1)</p>
-          <p><strong>RPM</strong> — Rounds per minute</p>
-          <p><strong>T_load</strong> — Reload Time</p>
-        </div>
-      </div>
+      <div class="center-stack">
+    <StatsPanel 
+        {stats} 
+        shield={selectedShield} 
+        compact={showLegend} 
+    />
+
+    <div class="formula-legend">
+        <h3>Formula Legend</h3>
+
+        <p><b>D</b> — Damage per shot</p>
+        <p><b>n</b> — Number of shots</p>
+        <p><b>H</b> — Health</p>
+        <p><b>DR</b> — Damage Reduction (0–1)</p>
+        <p><b>RPM</b> — Rounds per minute</p>
+        <p><b>T_load</b> — Reload Time</p>
+    </div>
+</div>
     </div>
   </div>
 </main>
@@ -165,26 +166,25 @@
 
   @media(max-width: 900px) { .grid-container { grid-template-columns: 1fr; } }
 
-  .formula-panel {
-  background: #151920;
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #1f2733;
-  color: #e2e8f0;
-}
-
-.formula-panel h2 {
-  margin-top: 0;
-  font-size: 1.2rem;
-  text-align: center;
-  color: #ed8936;
-}
-
-.formula-grid {
-  margin-top: 1rem;
+ .center-stack {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 1.5rem;
+}
+
+.formula-legend {
+  background: #1a1d24;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #2a2e36;
+  color: #e2e8f0;
   font-size: 0.9rem;
+}
+
+.formula-legend h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: #ed8936;
 }
 </style>
