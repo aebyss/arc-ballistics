@@ -41,7 +41,7 @@
       damage_close: 0, mag_size: 0, weight: 0, value: 0
   };
   
-
+  // 2.  Shield Logic
   $: selectedShield = shields[selectedShieldKey];
   
   $: if(selectedWeapon && selectedWeapon.name !== "Loading..." && selectedShield) { 
@@ -111,24 +111,12 @@
         />
       </div>
 
-      <div class="center-stack">
-    <StatsPanel 
-        {stats} 
-        shield={selectedShield} 
-        compact={showLegend} 
-    />
+      <StatsPanel 
+          {stats} 
+          shield={selectedShield} 
+          compact={showLegend} 
+      />
 
-    <div class="formula-legend">
-        <h3>Formula Legend</h3>
-
-        <p><b>D</b> — Damage per shot</p>
-        <p><b>n</b> — Number of shots</p>
-        <p><b>H</b> — Health</p>
-        <p><b>DR</b> — Damage Reduction (0–1)</p>
-        <p><b>RPM</b> — Rounds per minute</p>
-        <p><b>T_load</b> — Reload Time</p>
-    </div>
-</div>
     </div>
   </div>
 </main>
@@ -142,13 +130,14 @@
   .highlight { color: #ed8936; }
   .status-line { text-align: center; color: #718096; font-size: 0.8rem; margin-top: 0.5rem; }
 
-  .grid-container {
-  display: grid;
-  grid-template-columns: 400px 450px 300px;
-  justify-content: center;
-  gap: 2rem;
-  align-items: center;
-}
+  .grid-container { 
+    display: grid; 
+    grid-template-columns: 400px 450px; 
+    justify-content: center; 
+    gap: 2rem; 
+    align-items: stretch; 
+    transition: all 0.3s ease;
+  }
   .repo-link {
   display: block;
   text-align: center;
@@ -165,26 +154,4 @@
   .left-panel-wrapper { display: flex; flex-direction: column; gap: 1.5rem; }
 
   @media(max-width: 900px) { .grid-container { grid-template-columns: 1fr; } }
-
- .center-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.formula-legend {
-  background: #1a1d24;
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #2a2e36;
-  color: #e2e8f0;
-  font-size: 0.9rem;
-}
-
-.formula-legend h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1rem;
-  text-transform: uppercase;
-  color: #ed8936;
-}
 </style>
