@@ -41,10 +41,9 @@
       damage_close: 0, mag_size: 0, weight: 0, value: 0
   };
   
-  // 2. Selected Shield Logic
+
   $: selectedShield = shields[selectedShieldKey];
   
-  // 3. Trigger update when inputs change
   $: if(selectedWeapon && selectedWeapon.name !== "Loading..." && selectedShield) { 
       updateStats(); 
   }
@@ -98,7 +97,6 @@
     <div class="grid-container">
       
       <div class="left-panel-wrapper">
-        <!-- 1. Config -->
         <ConfigPanel 
             bind:weaponKey={selectedWeaponKey} 
             bind:shieldKey={selectedShieldKey}
@@ -107,15 +105,12 @@
             {isLoading}
         />
 
-        <!-- 2. Card -->
         <WeaponCard 
             weapon={selectedWeapon} 
             bind:showLegend={showLegend} 
         />
       </div>
 
-      <!-- 3. Stats -->
-      <!-- Note: We pass 'shsowLegend' into 'compact' so stats shrink when legend is open -->
       <StatsPanel 
           {stats} 
           shield={selectedShield} 

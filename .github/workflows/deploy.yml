@@ -38,5 +38,13 @@ jobs:
         run: |
           sudo systemctl stop arcballistics
           sleep 1
+
+          # Deploy Go backend
           sudo cp arcballistics /home/edo/arc-ballistics/arcballistics
+
+          # Deploy frontend
+          sudo rm -rf /home/edo/arc-ballistics/assets
+          sudo rm -f /home/edo/arc-ballistics/index.html
+          sudo cp -r frontend/dist/* /home/edo/arc-ballistics/
+
           sudo systemctl start arcballistics
