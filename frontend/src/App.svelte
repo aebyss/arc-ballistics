@@ -112,7 +112,7 @@
       </div>
 
       <!-- 3. Stats -->
-      <!-- Note: We pass 'showLegend' into 'compact' so stats shrink when legend is open -->
+      <!-- Note: We pass 'shsowLegend' into 'compact' so stats shrink when legend is open -->
       <StatsPanel 
           {stats} 
           shield={selectedShield} 
