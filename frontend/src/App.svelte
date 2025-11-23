@@ -116,27 +116,18 @@
           shield={selectedShield} 
           compact={showLegend} 
       />
-      <!-- Formula Legend -->
-<div class="legend-container">
-  <button class="legend-toggle" on:click={() => showLegend = !showLegend}>
-    {showLegend ? "Hide Legend" : "Show Legend"}
-  </button>
-
-  {#if showLegend}
-    <div class="legend-panel">
-      <h3>Formula Legend</h3>
-      <ul>
-        <li><b>D</b> — Damage per shot</li>
-        <li><b>n</b> — Number of shots</li>
-        <li><b>H</b> — Health</li>
-        <li><b>DR</b> — Damage Reduction (0–1)</li>
-        <li><b>RPM</b> — Rounds per minute</li>
-        <li><b>T_load</b> — Reload Time</li>
-      </ul>
-    </div>
-  {/if}
-</div>
-
+       <!-- Static Formula Legend -->
+      <div class="formula-panel">
+        <h2>Formula Legend</h2>
+        <div class="formula-grid">
+          <p><strong>D</strong> — Damage per shot</p>
+          <p><strong>n</strong> — Number of shots</p>
+          <p><strong>H</strong> — Health</p>
+          <p><strong>DR</strong> — Damage Reduction (0–1)</p>
+          <p><strong>RPM</strong> — Rounds per minute</p>
+          <p><strong>T_load</strong> — Reload Time</p>
+        </div>
+      </div>
     </div>
   </div>
 </main>
@@ -150,14 +141,13 @@
   .highlight { color: #ed8936; }
   .status-line { text-align: center; color: #718096; font-size: 0.8rem; margin-top: 0.5rem; }
 
-  .grid-container { 
-    display: grid; 
-    grid-template-columns: 400px 450px; 
-    justify-content: center; 
-    gap: 2rem; 
-    align-items: stretch; 
-    transition: all 0.3s ease;
-  }
+  .grid-container {
+  display: grid;
+  grid-template-columns: 400px 450px 300px;
+  justify-content: center;
+  gap: 2rem;
+  align-items: start;
+}
   .repo-link {
   display: block;
   text-align: center;
@@ -174,46 +164,27 @@
   .left-panel-wrapper { display: flex; flex-direction: column; gap: 1.5rem; }
 
   @media(max-width: 900px) { .grid-container { grid-template-columns: 1fr; } }
-  .legend-container {
-  margin-top: 1rem;
-  text-align: center;
-}
 
-.legend-toggle {
-  background: #1f2735;
+  .formula-panel {
+  background: #151920;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #1f2733;
   color: #e2e8f0;
-  padding: 0.4rem 1rem;
-  border: 1px solid #2d3748;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
 }
 
-.legend-toggle:hover {
-  background: #2a3345;
+.formula-panel h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #ed8936;
 }
 
-.legend-panel {
+.formula-grid {
   margin-top: 1rem;
-  padding: 1rem 1.5rem;
-  background: #1a202c;
-  border-radius: 8px;
-  border: 1px solid #2d3748;
-  color: #cbd5e0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
   font-size: 0.9rem;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
 }
-
-.legend-panel ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.legend-panel li {
-  padding: 0.2rem 0;
-}
-
 </style>
