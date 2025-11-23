@@ -146,7 +146,7 @@
   grid-template-columns: 400px 450px 300px;
   justify-content: center;
   gap: 2rem;
-  align-items: start;
+  align-items: center;
 }
   .repo-link {
   display: block;
