@@ -28,7 +28,9 @@
     </div>
     
     <div class="stat-box">
+      <div class="wip-overlay">WIP</div>
        <span class="label">Burst DPS</span>
+       
        <div class="value">{(stats.burst_dps || 0).toFixed(0)}</div>
        <span class="unit-label">Firing Only</span>
        {#if !compact}
@@ -37,7 +39,9 @@
     </div>
 
     <div class="stat-box">
+      <div class="wip-overlay">WIP</div>
        <span class="label">Cyclic DPS</span>
+       
        <div class="value">{(stats.cyclic_dps || 0).toFixed(0)}</div>
        <span class="unit-label">With Reload</span>
        {#if !compact}
@@ -80,6 +84,19 @@
   position: relative; top: 1px; right: 10px; width: 24px; height: 24px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); border-radius: 50%; color: white; font-weight: bold; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 0.8rem; z-index: 10; }
 .info-hover:hover {
   opacity: 0.5;
+}
+
+.wip-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.08);
+  pointer-events: none; 
+  text-transform: uppercase;
 }
   /* COMPACT MODE */
   .stats-display.compact { padding: 1rem; }
