@@ -34,6 +34,37 @@ func HandleGetWeapons(c *gin.Context) {
 	c.JSON(http.StatusOK, weapons)
 }
 
+func calculateShotsToKill(D float64, H float64, S float64, DR float64) int {
+	if D <= 0 {
+		return 999 // safety
+	}
+
+	// Damage dealt while shield is active
+	shieldedDamage := D * (1 - DR)
+	if shieldedDamage <= 0 {
+		shieldedDamage = 0.1
+	}
+
+	// Shots needed to break shield (shield takes full damage)
+	n := math.Ceil(S / D)
+
+	// target dies before shield breaks
+	shotsToKillShielded := math.Ceil(H / shieldedDamage)
+	if shotsToKillShielded <= n {
+		return int(shotsToKillShielded)
+	}
+
+	// shield breaks, continue with full damage
+	healthRemaining := H - n*shieldedDamage
+	if healthRemaining < 0 {
+		healthRemaining = 0
+	}
+
+	shotsAfterBreak := math.Ceil(healthRemaining / D)
+
+	return int(n + shotsAfterBreak)
+}
+
 // 1. DAMAGE SIMULATOR (Single Shot)
 func HandleSimulateDamage(c *gin.Context) {
 	var req SimulationRequest
@@ -81,69 +112,22 @@ func HandleSimulateTTK(c *gin.Context) {
 		return
 	}
 
-	H := req.Target.Health
-	f := req.Target.DR // Shield Block Rate
 	D := calculateBaseDamage(req.Weapon, req.Distance)
-	ShieldHP := req.Target.Shield
+	H := req.Target.Health
+	S := req.Target.Shield
+	DR := req.Target.DR
 
-	// Safety check for D=0 to prevent divide by zero
-	if D <= 0 {
-		D = 1
-	}
+	// Correct calculation
+	shotsToKill := calculateShotsToKill(D, H, S, DR)
 
-	// 2. Calculate 'n' (Landed shots while shield is active)
-	// Shield takes full raw damage.
-	// n = Ceil(ShieldHP / Damage)
-	var n float64 = 0
-	if ShieldHP > 0 {
-		n = math.Ceil(ShieldHP / D)
-	}
-
-	var shotsToKill float64
-
-	// Damage dealt per shot while shield is UP
-	shieldedDamage := D * (1 - f)
-	if shieldedDamage <= 0 {
-		shieldedDamage = 0.1
-	} // Safety
-
-	// Check Case 1: Does the target die BEFORE the shield breaks?
-	shotsToKillShielded := math.Ceil(H / shieldedDamage)
-
-	if shotsToKillShielded <= n {
-		// CASE 1: Target dies while shield is still active
-		// Formula: Ceil[ H / ((1-f)D) ]
-		shotsToKill = shotsToKillShielded
-	} else {
-		// CASE 2: Shield breaks, then target dies
-		// Formula: n + Ceil[ (H - n(1-f)D) / D ]
-
-		// Health lost during the 'n' shots
-		healthLost := n * shieldedDamage
-
-		// Remaining Health
-		remainingHP := H - healthLost
-		if remainingHP < 0 {
-			remainingHP = 0
-		}
-
-		// Shots needed to finish off remaining HP (Unshielded)
-		shotsAfterBreak := math.Ceil(remainingHP / D)
-		shotsToKill = n + shotsAfterBreak
-	}
-
-	// 4. Calculate Stats for Frontend
-	finalShots := int(shotsToKill)
-
-	// Burst DPS
+	// --- DPS Calculations ---
 	rpm := req.Weapon.FireRate
 	if rpm <= 0 {
 		rpm = 1
 	}
 	rps := rpm / 60.0
-	burstDPS := D * rps // Burst DPS // WIP not correct values for rpm
+	burstDPS := D * rps
 
-	// Cyclic DPS
 	mag := req.Weapon.MagSize
 	if mag <= 0 {
 		mag = 30
@@ -154,7 +138,7 @@ func HandleSimulateTTK(c *gin.Context) {
 	cyclicDPS := damagePerMag / (magDumpTime + req.Weapon.ReloadTime)
 
 	c.JSON(http.StatusOK, gin.H{
-		"shots_to_kill": finalShots,
+		"shots_to_kill": shotsToKill,
 		"damage":        D,
 		"burst_dps":     burstDPS,
 		"cyclic_dps":    cyclicDPS,

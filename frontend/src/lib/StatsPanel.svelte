@@ -1,6 +1,8 @@
 <script>
   import { slide } from 'svelte/transition';
-  import MathTex from "../Math.svelte"; 
+  import MathTex from "../Math.svelte";
+  import FormulaTooltip from "./FormulaTooltip.svelte";
+  import { formulaInfo } from "./formulaText.js"; // optional
   export let stats = {};
   export let shield = {};
   export let compact = false; // Controlled by parent (showLegend)
@@ -9,9 +11,14 @@
 <div class="card stats-display" class:compact={compact}>
   <h2>Simulation Results</h2>
   <div class="stat-grid">
-    
+    <script>
+  
+</script>
     <div class="stat-box big">
       <span class="label">Shots to Kill</span>
+      <FormulaTooltip text={formulaInfo}>
+        <span class="info-hover">ⓘ</span>
+      </FormulaTooltip>
       <div class="value text-highlight">{stats.shotsToKill}</div>
       
       {#if !compact}
@@ -69,7 +76,11 @@
   .text-highlight { color: #ed8936; font-size: 6rem !important; text-shadow: 0 0 20px rgba(237, 137, 54, 0.2); transition: font-size 0.3s; }
   .sub-text { font-size: 1rem; color: #cbd5e0; margin-bottom: 10px; font-weight: 500; }
   .unit-label { font-size: 0.75rem; color: #718096; text-transform: uppercase; margin-top: 4px; font-weight: 700; }
-
+  .info-hover {
+  position: relative; top: 1px; right: 10px; width: 24px; height: 24px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); border-radius: 50%; color: white; font-weight: bold; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 0.8rem; z-index: 10; }
+.info-hover:hover {
+  opacity: 0.5;
+}
   /* COMPACT MODE */
   .stats-display.compact { padding: 1rem; }
   .stats-display.compact .stat-grid { gap: 0.8rem; }
