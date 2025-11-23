@@ -26,11 +26,7 @@
     none:   { name: "No Shield", shield: 0,   dr: 0.00 },
     light:  { name: "Light",     shield: 40,  dr: 0.40 },
     medium: { name: "Medium",    shield: 70,  dr: 0.425 },
-    heavy:  { name: "Heavy",     shield: 80,  dr: 0.525 },
-    green:  { name: "Green",     shield: 50,  dr: 0.23 },
-    blue:   { name: "Blue",      shield: 80,  dr: 0.45 },
-    purple: { name: "Purple",    shield: 120, dr: 0.65 },
-    gold:   { name: "Gold",      shield: 170, dr: 0.80 }
+    heavy:  { name: "Heavy",     shield: 80,  dr: 0.525 }
   };
 
   // --- Reactivity ---
