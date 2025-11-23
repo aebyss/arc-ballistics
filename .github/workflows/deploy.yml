@@ -16,10 +16,9 @@ jobs:
       - name: Build frontend
         working-directory: frontend
         run: |
-          cd frontend
+          cd "$GITHUB_WORKSPACE/frontend"
           npm install
-          chmod -R +x node_modules/.bin
-          npm run build
+          npx vite build
 
       - name: Build Go backend
         run: |
