@@ -137,7 +137,7 @@
     grid-template-columns: 400px 450px; 
     justify-content: center; 
     gap: 2rem; 
-    align-items: start; 
+    align-items: stretch; 
     transition: all 0.3s ease;
   }
   .left-panel-wrapper { display: flex; flex-direction: column; gap: 1.5rem; }
