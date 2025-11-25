@@ -94,7 +94,7 @@
   align-items: center;
   font-size: 2.2rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.08);
+  color: rgba(224, 121, 11, 0.08);
   pointer-events: none; 
   text-transform: uppercase;
 }
