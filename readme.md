@@ -21,7 +21,7 @@ It calculates damage output based on shields, damage reduction (DR) and reload m
 ## Features
 
 - **Precise STK Calculation:** Accurate determination of Shots-to-Kill.
-- **DPS Metrics:** Computes Burst DPS and Cyclic DPS.
+- **DPS Metrics: WIP** Computes Burst DPS and Cyclic DPS.
 - **Burst DPS Notice:** Burst DPS is currently approximate, because in-game RPM values are UI-only and not exact.
 - **Defense Simulation:** Supports shield values and DR (damage reduction).
 - **Local Cache:** Stores weapon data locally for fast lookup.
@@ -37,5 +37,23 @@ It calculates damage output based on shields, damage reduction (DR) and reload m
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/YOUR_NAME/arcballistics.git
+   git clone https://github.com/aebyss/arcballistics.git
    cd arcballistics
+2. Run 
+   ```sh
+   go mod tidy
+   go run main.go
+
+### Frontend Svelte
+
+1. Navigate to the repository:
+   ```sh
+   cd frontend
+   npm install
+   npm run dev
+2. Open in browser
+
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+Made with ❤️ for the ARC Raiders community
