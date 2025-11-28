@@ -1,14 +1,41 @@
 # ARC Ballistics
 
-ARC Ballistics is a lightweight damage simulator for the game *ARC Raiders*. It calculates damage output considering damage reduction (DR), shields, and reload times to provide accurate burst and cyclic DPS metrics.
+![ARC Ballistics Banner](./arc.png)
 
-The project features a single-binary architecture with a **Go (Gin)** backend and a static **Svelte** frontend.
+[![Website](https://img.shields.io/badge/Website-live-blue)](#)
+![Backend](https://img.shields.io/badge/Backend-Go_(Gin)-00ADD8)
+![Frontend](https://img.shields.io/badge/Frontend-Svelte-ff3e00)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+ARC Ballistics is a lightweight damage-simulation tool for the game *ARC Raiders*.  
+It calculates damage output based on shields, damage reduction (DR) and reload mechanics to provide reliable **Shots-to-Kill**, **Burst DPS**, and **Cyclic DPS** values.
+
+---
+
+## Preview
+
+![Website Preview](./main.png)
+
+---
 
 ## Features
 
-- **Detailed Calculations:** Accurate Shots-to-Kill (STK)
-- **DPS Metrics:** Calculates both Burst DPS (firing only) and Cyclic DPS (including reload time).
-- **BURST DPS** Is not currently correct since RPM on weapons is only for UI purposes and is not representing correct stat.
-- **Defense Simulation:** Accounts for target Shields and Damage Reduction (DR).
-- **Local Cache:** Implements a local weapon cache for fast retrieval.
-- **Single Binary:** The frontend is embedded or served statically, allowing the app to run as a single executable.
+- **Precise STK Calculation:** Accurate determination of Shots-to-Kill.
+- **DPS Metrics:** Computes Burst DPS and Cyclic DPS.
+- **Burst DPS Notice:** Burst DPS is currently approximate, because in-game RPM values are UI-only and not exact.
+- **Defense Simulation:** Supports shield values and DR (damage reduction).
+- **Local Cache:** Stores weapon data locally for fast lookup.
+- **Single-Binary Architecture:**
+  - Backend: Go (Gin)
+  - Frontend: Svelte (static)
+
+---
+
+## Installation
+
+### Backend (Go / Gin)
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/YOUR_NAME/arcballistics.git
+   cd arcballistics
