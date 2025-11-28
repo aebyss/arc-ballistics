@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
+   sodipodi:docname="arcRaidersstripes.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="2.8214753"
+     inkscape:cx="213.89519"
+     inkscape:cy="548.29471"
+     inkscape:window-width="3830"
+     inkscape:window-height="2099"
+     inkscape:window-x="0"
+     inkscape:window-y="2160"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" /><defs
+     id="defs1" /><g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"><path
+       id="path1"
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#f80e10;enable-background:accumulate;stop-color:#000000;stop-opacity:1;opacity:1"
+       d="M 0.066145833 1.8975586 L 0.066145833 14.88643 L 87.249972 178.28214 L 94.180815 178.28214 L 0.066145833 1.8975586 z " /><path
+       id="path2"
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#f9ce08;enable-background:accumulate;stop-color:#000000;stop-opacity:1;opacity:1"
+       d="M 0.066145833 20.543449 L 0.066145833 34.434591 L 76.04032 178.32555 L 83.374756 178.32555 L 0.066145833 20.543449 z " /><path
+       id="path3"
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#2df186;enable-background:accumulate;stop-color:#000000;stop-opacity:1;opacity:1"
+       d="M 0.17880046 42.345219 L 0.17880046 56.013635 L 65.417196 178.32917 L 72.707707 178.32917 L 0.17880046 42.345219 z " /><path
+       id="path4"
+       style="baseline-shift:baseline;display:inline;overflow:visible;vector-effect:none;fill:#84f5ed;enable-background:accumulate;stop-color:#000000;stop-opacity:1;opacity:1"
+       d="M -0.014986165 63.258671 L -0.014986165 76.598942 C 17.723856 109.18928 32.417525 137.2128 28.760002 178.35966 L 35.151343 178.35966 C 39.142317 131.3462 19.903597 100.15965 -0.014986165 63.258671 z " /></g></svg>

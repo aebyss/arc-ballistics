@@ -16,7 +16,8 @@ func main() {
 
 	r.Static("/assets", "./frontend/dist/assets")
 
-	r.StaticFile("/favicon.ico", "./frontend/dist/favicon.ico")
+	r.StaticFile("/favicon.svg", "./frontend/dist/favicon.svg")
+	r.StaticFile("/robots.txt", "./robots.txt")
 
 	r.GET("/", func(c *gin.Context) {
 		c.File("./frontend/dist/index.html")
