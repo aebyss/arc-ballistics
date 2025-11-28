@@ -34,7 +34,8 @@
        <div class="value">{(stats.burst_dps || 0).toFixed(0)}</div>
        <span class="unit-label">Firing Only</span>
        {#if !compact}
-          <div transition:slide><MathTex latex={'D \\times \\frac{RPM}{60}'} /></div>
+          <div transition:slide><MathTex latex={'D \\times \\cancel{\\frac{RPM}{60}}'} />
+</div>
        {/if}
     </div>
 
